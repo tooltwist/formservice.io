@@ -1,11 +1,17 @@
 ---
 title: Authentication
 type: guide
-order: 3
+order: 4
 ---
 
 
+## Public Access
 
+## Restricting Access by User
+### Loginservice
 
+### Auth0
 
-## Authentication
+### Web Hook based authentication
+
+## Further Restricting Access
