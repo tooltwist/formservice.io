@@ -203,7 +203,72 @@
     <h1>Formservice.io</h1>
   
   
-    <h2 id="Architecture"><a href="#Architecture" class="headerlink" title="Architecture"></a>Architecture</h2><p>Formservice is designed to be embedded into applications.</p>
+    <h2 id="Architecture"><a href="#Architecture" class="headerlink" title="Architecture"></a>Architecture</h2><h3 id="Basics"><a href="#Basics" class="headerlink" title="Basics"></a>Basics</h3><p>Lets start with the basics… you want to have a form where you enter information, and that information will get stored somewhere.</p>
+<center><img src="/images/formservice/basics-1.png" alt="Basics"></center>
+
+
+<p>Assuming you want a modern web-based application, the form will typically be used on either a mobile device or web browser and the database will be “in the cloud” or, to the use non-marketing-speak, it will be “on a server somewhere”.</p>
+<blockquote>
+<p>This architectural split is often called the <em>client</em> and the <em>server</em>, but this sometimes causes confusion because the word “server” sometimes refers to a physical or virtual machine (e.g. a Dell server or AWS), to the web-server program (e.g. Apache, Tomcat, or NodeJS Express), or in other cases to the application code providing a service.</p>
+<p>To avoid confusion we’ll often refer to the <em>front end</em> and the <em>back end</em>. In each case we are talking about the <em>software</em> in, or used by, your application.</p>
+</blockquote>
+<p>As a software developer, you could write the form code by hand, and you could write the database code by hand. You are here looking at Formservice because you would presumably like an easier and more flexible way of doing things.</p>
+<h3 id="Generic-Code"><a href="#Generic-Code" class="headerlink" title="Generic Code"></a>Generic Code</h3><p>The role of Formservice is to provide you with options to use pre-existing software for the above architecture, so you don’t need to write your own. For the front end we provide a library that can be included into your application. For the backend you have quite a few options, ranging from using our cloud based service (don’t write code, and don’t install anything) through to a custom integration of Formservice functionality and your own code. More details about this later…</p>
+<p>In order to make Formservice do what <em>your</em> application requires, it needs to work with three types of information:</p>
+<ol>
+<li>Definitions of your User Interface</li>
+<li>Definitions of your application’s data</li>
+<li>Storing and accessing your Application’s Data</li>
+</ol>
+<h3 id="Views-and-Layouts"><a href="#Views-and-Layouts" class="headerlink" title="Views and Layouts"></a>Views and Layouts</h3><p><code>Views</code> are the various user interfaces of your forms. Usually there will be multiple user interfaces that work on the same data. For example, when you displayed a <em>list</em> of products, the user interface (UI) is different to when you display a <em>single</em> product. If you provide a Formservice front end with <em>layout</em> definitions that describe the user interface of each view, Formservice can create the user interface for you.</p>
+<p>The easiest way to do this is with the Formservice design tool. If the layout definitions are stored in your backend, any UI changes can take effect immediately without modifying or re-deploying your website.</p>
+<center><img src="/images/formservice/designer-1.png" alt="Designer"></center>
+
+
+
+<blockquote>
+<p>At the current time, there is a front end library for websites named vue-formservice available via npm. Mobile applications can access the Formservice backend by calling the API directly. If you would like to create a new front end library, feel free to base it the open source vue-formservice, or contact us at ToolTwist for assistance.</p>
+</blockquote>
+<h3 id="Data-Schema"><a href="#Data-Schema" class="headerlink" title="Data Schema"></a>Data Schema</h3><p>When Formservice understands more about the actual application data you wish to store, it can do a great deal more for you.</p>
+<p>By defining the <em>schema</em> of your application’s data, you allow Formservice to…</p>
+<ul>
+<li>The Designer becomes easier to use, allowing relevant fields to be added to forms, with minimal definition.</li>
+<li>The Formservice front end libraries will create UIs with appropriate validations, and automatically provide dropdowns and lookups on fields that refer to data in other database tables.</li>
+<li>The Formservice backend is able to store the data for you, with indexing, and searchable fields, or alternately can store the data in an existing application database.</li>
+</ul>
+<center><img src="/images/formservice/schemas-1.png" alt="Schemas"></center>
+
+
+<h3 id="Application-Data"><a href="#Application-Data" class="headerlink" title="Application Data"></a>Application Data</h3><p>The Formservice backend can store your data for you, or it can intelligently store it in an existing application database.</p>
+<p>[More details below] ZZZ</p>
+<h3 id="Where-data-is-Stored"><a href="#Where-data-is-Stored" class="headerlink" title="Where data is Stored"></a>Where data is Stored</h3><p>Usually on the backend.</p>
+<center><img src="/images/formservice/data-triad-1.png" alt="Data triad"></center>
+
+
+
+
+<h2 id="Development-Order"><a href="#Development-Order" class="headerlink" title="Development Order"></a>Development Order</h2><h3 id="A-quick-word-of-warning"><a href="#A-quick-word-of-warning" class="headerlink" title="A quick word of warning"></a>A quick word of warning</h3><blockquote>
+<p>Formservice makes some things so simple that it is easy to fall into bad habits. Formservice is NOT a replacement for traditional data modelling skills and a well thought out design.</p>
+<p>While Formservice has the ability to trivialise simple form creating and data storage, it also has the ability to work with existing databases and custom application code. Please do not try to use the simplifying features in places where they are not appropriate.</p>
+<p>Good data modelling and consideration to how and where data is stored is essential for the long term stability and performance of your application.</p>
+</blockquote>
+<p>Each project starts with different requirements and available information, and developers have different skills or preferred approaches to problems. An enterprise level application may start by considering the corporate data requirements, whereas a lean startup may begin by prototyping user interfaces. In other projects you might start with existing data that you need to de-engineer.</p>
+<p>While the best result in Formservice comes when you have data, schema, and views,  Formservice allows you to work “with what you have”.</p>
+<h3 id="User-Interface-driven-Form-Design"><a href="#User-Interface-driven-Form-Design" class="headerlink" title="User Interface driven Form Design"></a>User Interface driven Form Design</h3><center><img src="/images/formservice/ui-first-1.png" alt="UI driven Form Design"></center>
+
+
+
+<h3 id="Data-Modelling-driven-Form-Design"><a href="#Data-Modelling-driven-Form-Design" class="headerlink" title="Data-Modelling driven Form Design"></a>Data-Modelling driven Form Design</h3><center><img src="/images/formservice/modelling-first-1.png" alt="Data Modelling driven Form Design"></center>
+
+
+
+<h3 id="Data-driven-Form-Design"><a href="#Data-driven-Form-Design" class="headerlink" title="Data driven Form Design"></a>Data driven Form Design</h3><center><img src="/images/formservice/data-first-1.png" alt="Data driven Form Design"></center>
+
+
+
+
+
+<h2 id="Setup"><a href="#Setup" class="headerlink" title="Setup"></a>Setup</h2><p>Formservice is designed to be embedded into applications.</p>
 <p>To provide flexibility to accommodate as many application architectures as possible, Formservice is provided as multiple <em>functional</em> components, with variations for the deployment of each.</p>
  <center><img src="/images/formservice/architecture-1.png" alt="Architecture"></center>
 
@@ -211,10 +276,14 @@
 <p>Notice that these are <em>functional</em> components, and in some cases there may be alternates in the software used to provide that functionality. Some of these components are Open Source, and if you wish you are free to create your own version of one of these components,</p>
 <p>The glue that holds the parts together is the use of a common API protocol.</p>
 <h3 id="Default-simplest-configuration"><a href="#Default-simplest-configuration" class="headerlink" title="Default (simplest) configuration"></a>Default (simplest) configuration</h3><p>The default configuration is to have your application let the ToolTwist servers do all the work. Configure your application to use <a href="https://formservice.io">https://formservice.io</a> then log in to your Tooltwist account, where you can define the data you want to store and design your forms.</p>
-<center><img src="/images/formservice/default-config-1.png" alt=""></center>
+<center><img src="/images/formservice/magic-1.png" alt="Simplest Design"></center>
 
-<h3 id="Data-and-Meta-data"><a href="#Data-and-Meta-data" class="headerlink" title="Data and Meta-data"></a>Data and Meta-data</h3><h4 id="Schema"><a href="#Schema" class="headerlink" title="Schema"></a>Schema</h4><h4 id="Views-of-that-schema-Forms"><a href="#Views-of-that-schema-Forms" class="headerlink" title="Views of that schema (Forms)"></a>Views of that schema (Forms)</h4><h4 id="UI-first-designing"><a href="#UI-first-designing" class="headerlink" title="UI-first designing"></a>UI-first designing</h4><h2 id="Client-Side"><a href="#Client-Side" class="headerlink" title="Client Side"></a>Client Side</h2><h3 id="Webpage"><a href="#Webpage" class="headerlink" title="Webpage"></a>Webpage</h3><center><img src="/images/formservice/client-vue-formservice-1.png" alt=""></center>
 
+<p>As far as your application code is concerned, all the form designing and the storage and retrieval of application data is handled by magic.</p>
+<p>This simple configuration is suitable for many simple application requirements, such as a basic ‘Contact Us’ form on a website (not to be confused with a full CRM ticketing system!) where setting up a full database seems like overkill.</p>
+<h2 id="Client-Side-Programming"><a href="#Client-Side-Programming" class="headerlink" title="Client Side Programming"></a>Client Side Programming</h2><h3 id="Webpage"><a href="#Webpage" class="headerlink" title="Webpage"></a>Webpage</h3><center><img src="/images/formservice/client-vue-formservice-1.png" alt=""></center>
+
+<p><a href="https://www.npmjs.com/package/vue-formservice" target="_blank" rel="noopener">vue-formservice</a></p>
 <h3 id="Mobile-App"><a href="#Mobile-App" class="headerlink" title="Mobile App"></a>Mobile App</h3><center><img src="/images/formservice/client-mobile-1.png" alt=""></center>
 
 
