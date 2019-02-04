@@ -3,26 +3,26 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Search Vue.js — Tooltwist</title>
+    <title>Server Installation — Tooltwist</title>
     <meta charset="utf-8">
     <meta name="description" content="Tooltwist - A Web Development Platform">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
-    <link rel="alternate" hreflang="x-default" href="https://vuejs.org/v2/search/index.html">
-    <link rel="alternate" hreflang="zh" href="https://cn.vuejs.org/v2/search/index.html">
-    <link rel="alternate" hreflang="ja" href="https://jp.vuejs.org/v2/search/index.html">
-    <link rel="alternate" hreflang="ru" href="https://ru.vuejs.org/v2/search/index.html">
-    <link rel="alternate" hreflang="ko" href="https://kr.vuejs.org/v2/search/index.html">
-    <link rel="alternate" hreflang="pt-BR" href="https://br.vuejs.org/v2/search/index.html">
-    <link rel="alternate" hreflang="fr" href="https://fr.vuejs.org/v2/search/index.html">
+    <link rel="alternate" hreflang="x-default" href="https://vuejs.org/v2/server/index.html">
+    <link rel="alternate" hreflang="zh" href="https://cn.vuejs.org/v2/server/index.html">
+    <link rel="alternate" hreflang="ja" href="https://jp.vuejs.org/v2/server/index.html">
+    <link rel="alternate" hreflang="ru" href="https://ru.vuejs.org/v2/server/index.html">
+    <link rel="alternate" hreflang="ko" href="https://kr.vuejs.org/v2/server/index.html">
+    <link rel="alternate" hreflang="pt-BR" href="https://br.vuejs.org/v2/server/index.html">
+    <link rel="alternate" hreflang="fr" href="https://fr.vuejs.org/v2/server/index.html">
 
     <meta property="og:type" content="article">
-    <meta property="og:title" content="Search Vue.js — Tooltwist">
+    <meta property="og:title" content="Server Installation — Tooltwist">
     <meta property="og:description" content="Tooltwist - A Web Development Platform">
     <meta property="og:image" content="https://http://tooltwist.com///images/logo.png">
 
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Search Vue.js — Tooltwist">
+    <meta name="twitter:title" content="Server Installation — Tooltwist">
     <meta name="twitter:description" content="Tooltwist - A Web Development Platform">
     <meta name="twitter:image" content="https://http://tooltwist.com//images/logo.png">
 
@@ -60,7 +60,7 @@
     <script src="/js/vue.js"></script>
     <script>
       Vue.config.productionTip = false
-      window.PAGE_TYPE = "search"
+      window.PAGE_TYPE = "server"
     </script>
 
     <!-- ga -->
@@ -95,7 +95,7 @@
   <a href="/v2/client/" class="nav-link">Client</a>
 </li>
 <li>
-  <a href="/v2/server/" class="nav-link">Server</a>
+  <a href="/v2/server/" class="nav-link current">Server</a>
 </li>
 <li>
   <a href="/v2/schema/" class="nav-link">Schema</a>
@@ -136,7 +136,7 @@
   <a href="/v2/client/" class="nav-link">Client</a>
 </li>
 <li>
-  <a href="/v2/server/" class="nav-link">Server</a>
+  <a href="/v2/server/" class="nav-link current">Server</a>
 </li>
 <li>
   <a href="/v2/schema/" class="nav-link">Schema</a>
@@ -163,12 +163,75 @@
     </ul>
     <div class="list">
       
+        <h2>
+          
+          
+        </h2>
+        <ul class="menu-root">
+  
+    
+
+    
+
+    
+      
+        <li><h3>Server</h3></li>
+      
+    
+
+
+    <li>
+      <a href="/v2/server/index.html" class="sidebar-link current">Server Installation</a>
+    </li>
+  
+    
+
+    
+
+    
+      
+    
+
+
+    <li>
+      <a href="/v2/server/schema.html" class="sidebar-link">Schema</a>
+    </li>
+  
+    
+
+    
+
+    
+      
+    
+
+
+    <li>
+      <a href="/v2/server/json.html" class="sidebar-link">JSON Views</a>
+    </li>
+  
+    
+
+    
+
+    
+      
+    
+
+
+    <li>
+      <a href="/v2/server/deployment.html" class="sidebar-link">Deployment Options</a>
+    </li>
+  
+</ul>
+
+      
     </div>
   </div>
 </div>
 
 
-<div class="content search with-sidebar ">
+<div class="content server with-sidebar ">
   
     
       <div id="ad">
@@ -177,187 +240,30 @@
     
   
   
-    <h1>Search Vue.js</h1>
+    <h1>Server Installation</h1>
   
   
-    <div id="search-page">
-  <form class="search-form" @submit="submit">
-    <input
-      class="search-query"
-      v-model="search"
-      placeholder="Search Tooltwist"
-    >
-    <div class="search-footer">
-      <p>
-        <template v-if="totalResults">
-          <strong>{{ totalResults }} results</strong> found in {{ queryTime }}ms
-        </template>
-      </p>
-      <a target="_blank" href="https://www.algolia.com/">
-          <img src="/images/search-by-algolia.png" height="16">
-      </a>
-    </div>
-  </form>
-
-  <template v-if="results.length">
-    <search-result
-      v-for="(result, i) in results"
-      :key="i"
-      :result="result"
-    ></search-result>
-  </template>
-
-  <p v-else>No results were found.</p>
-
-  <div ref="infiniteScrollAnchor"></div>
-
-</div>
-
-<script src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js"></script>
-<script src="https://cdn.jsdelivr.net/algoliasearch.helper/2/algoliasearch.helper.min.js"></script>
-<script src="https://polyfill.io/v2/polyfill.min.js?features=IntersectionObserver"></script>
-<script>
-var match = window.location.pathname.match(/^\/(v\d+)/)
-var version = match ? match[1] : 'v2'
-var algolia = algoliasearch('BH4D9OD16A', '85cc3221c9f23bfbaa4e3913dd7625ea')
-var algoliaHelper = algoliasearchHelper(algolia, 'vuejs', {
-  hitsPerPage: 15,
-  maxValuesPerFacet: 10,
-  advancedSyntax: true,
-  facets: ['version'],
-})
-
-algoliaHelper.addFacetRefinement('version', version)
-algoliaHelper.on('result', parseSearchResults)
-
-var searchPage = new Vue({
-  el: '#search-page',
-  components: {
-    'search-result': {
-      props: {
-        result: {
-          type: Object,
-          required: true,
-        },
-      },
-      render(h) {
-        var content = []
-        content.push(h('a', {
-          attrs: {
-            class: 'title',
-            href: this.result.url,
-          },
-          domProps: { innerHTML: this.result.title },
-        }))
-        if (this.result.summary) {
-          content.push(h('p', {
-            attrs: { class: 'summary' },
-            domProps: { innerHTML: this.result.summary },
-          }))
-        }
-        content.push(h(
-          'div',
-          { attrs: { class: 'breadcrumbs'} },
-          this.result.breadcrumbs.map(function(breadcrumb) {
-            return h('span', {
-              attrs: { class: 'breadcrumb' },
-              domProps: { innerHTML: breadcrumb },
-            })
-          })
-        ))
-        return h('div', { attrs: { class: 'search-result' } }, content)
-      }
-    }
-  },
-  data: {
-    search: (new URL(location)).searchParams.get('q') || '',
-    totalResults: 0,
-    queryTime: 0,
-    results: [],
-    totalPages: 0,
-    lastPage: 0,
-  },
-  watch: {
-    search() {
-      this.updateSearch()
-      window.history.pushState(
-        {},
-        'Vue.js Search',
-        window.location.origin + window.location.pathname + '?q=' + encodeURIComponent(this.search)
-      )
-    }
-  },
-  created() {
-    this.updateSearch()
-  },
-  mounted() {
-    var observer = new IntersectionObserver(function(entries) {
-      if (entries[0].isIntersecting && searchPage.totalPages > searchPage.lastPage + 1) {
-        searchPage.addPage()
-      }
-    })
-    observer.observe(this.$refs.infiniteScrollAnchor)
-  },
-  methods: {
-    addPage() {
-      algoliaHelper.setCurrentPage(this.lastPage + 1).search()
-    },
-    updateSearch() {
-      algoliaHelper.setCurrentPage(0).setQuery(this.search).search()
-    },
-    submit(e) {
-      e.preventDefault()
-      if (this.results.length > 0) {
-        window.location = this.results[0].url
-      }
-    }
-  }
-})
-
-function parseSearchResults(content) {
-  if (content.query === '' || !(content.hits instanceof Array)) {
-    searchPage.totalResults = 0
-    searchPage.queryTime = 0
-    searchPage.results = []
-    searchPage.totalPages = 0
-    searchPage.lastPage = 0
-    return
-  }
-
-  var results = []
-
-  for (var hit of content.hits) {
-    var hierarchy = hit._highlightResult.hierarchy
-    var titles = []
-    var level = 0
-    var levelName
-    while ((levelName = 'lvl' + level++) in hierarchy) {
-      titles.push(hierarchy[levelName].value)
-    }
-    var summary
-    if (hit._snippetResult && hit._snippetResult.content) {
-      summary = hit._snippetResult.content.value + '...'
-    }
-    results.push({
-      title: titles.pop(),
-      url: hit.url,
-      summary: summary,
-      breadcrumbs: titles,
-    })
-  }
-
-  searchPage.totalResults = content.nbHits
-  searchPage.queryTime = content.processingTimeMS
-  searchPage.totalPages = content.nbPages
-  searchPage.lastPage = content.page
-
-  if (searchPage.lastPage === 0) {
-    searchPage.results = results
-  } else {
-    searchPage.results = searchPage.results.concat(results)
-  }
-}
-</script>
+    <h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><ol>
+<li>Add to an existing project</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install @tooltwist/formservice --save</span><br></pre></td></tr></table></figure>
+<p>or</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yarn add @tooltwist/formservice</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>Create a schema file</li>
+</ol>
+<ol start="3">
+<li>Prepare the database</li>
+</ol>
+<ol start="4">
+<li>Load the schema file in your program</li>
+</ol>
+<ol start="5">
+<li><p>Access views</p>
+</li>
+<li><p>[Optional] Add routes to for Restify</p>
+</li>
+</ol>
 
   
   
@@ -377,7 +283,7 @@ function parseSearchResults(content) {
 </script>
 
     Caught a mistake or want to contribute to the documentation?
-    <a href="https://github.com/vuejs/vuejs.org/blob/master/src/v2/search/index.md" target="_blank">
+    <a href="https://github.com/vuejs/vuejs.org/blob/master/src/v2/server/index.md" target="_blank">
       Edit this page on GitHub!
     </a>
   </div>

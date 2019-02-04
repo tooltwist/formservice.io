@@ -89,20 +89,34 @@
   </a>
   <ul id="nav">
     <li>
+  <a href="/v2/guide/" class="nav-link">Guide</a>
+</li>
+<li>
+  <a href="/v2/client/" class="nav-link">Client</a>
+</li>
+<li>
+  <a href="/v2/server/" class="nav-link">Server</a>
+</li>
+<li>
+  <a href="/v2/schema/" class="nav-link">Schema</a>
+</li>
+<li>
+  <a href="/v2/api/" class="nav-link current">API</a>
+</li>
+<!--
+<li>
+<a href="/v2/examples/" class="nav-link">Examples</a>
+</li>
+-->
+
+<!--
+<li>
   <form id="search-form">
     <input type="text" id="search-query-nav" class="search-query st-default-search-input">
   </form>
 </li>
-<li class="nav-dropdown-container learn">
-  <a class="nav-link current">Learn</a><span class="arrow"></span>
-  <ul class="nav-dropdown">
-    <li><ul>
-      <li><a href="/v2/guide/" class="nav-link">Guide</a></li>
-      <li><a href="/v2/api/" class="nav-link current">API</a></li>
-      <li><a href="/v2/examples/" class="nav-link">Examples</a></li>
-    </ul></li>
-  </ul>
-</li>
+-->
+
 
 
   </ul>
@@ -116,20 +130,34 @@
   <div class="sidebar-inner">
     <ul class="main-menu">
       <li>
+  <a href="/v2/guide/" class="nav-link">Guide</a>
+</li>
+<li>
+  <a href="/v2/client/" class="nav-link">Client</a>
+</li>
+<li>
+  <a href="/v2/server/" class="nav-link">Server</a>
+</li>
+<li>
+  <a href="/v2/schema/" class="nav-link">Schema</a>
+</li>
+<li>
+  <a href="/v2/api/" class="nav-link current">API</a>
+</li>
+<!--
+<li>
+<a href="/v2/examples/" class="nav-link">Examples</a>
+</li>
+-->
+
+<!--
+<li>
   <form id="search-form">
     <input type="text" id="search-query-sidebar" class="search-query st-default-search-input">
   </form>
 </li>
-<li class="nav-dropdown-container learn">
-  <a class="nav-link current">Learn</a><span class="arrow"></span>
-  <ul class="nav-dropdown">
-    <li><ul>
-      <li><a href="/v2/guide/" class="nav-link">Guide</a></li>
-      <li><a href="/v2/api/" class="nav-link current">API</a></li>
-      <li><a href="/v2/examples/" class="nav-link">Examples</a></li>
-    </ul></li>
-  </ul>
-</li>
+-->
+
 
 
     </ul>
@@ -161,7 +189,7 @@
     <h1>API</h1>
   
   
-    <h2 id="selectMappedView-GET"><a href="#selectMappedView-GET" class="headerlink" title="selectMappedView (GET)"></a>selectMappedView (GET)</h2><p>Select records of a specified type</p>
+    <h2 id="selectView-GET"><a href="#selectView-GET" class="headerlink" title="selectView (GET)"></a>selectView (GET)</h2><p>Select records of a specified type</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> result = <span class="keyword">await</span> getMappedView(context, viewname, options)</span><br></pre></td></tr></table></figure>
 <p>The returned value contains a list of record from the specified view. Without a <a href="#where">where</a> clause all records in the view will be selected.</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> result = <span class="keyword">await</span> getMappedView(context, <span class="string">'thing'</span>, &#123; &#125;)</span><br><span class="line"><span class="comment">// &#123;</span></span><br><span class="line"><span class="comment">//   "data": [</span></span><br><span class="line"><span class="comment">//       &#123;</span></span><br><span class="line"><span class="comment">//           "id": 4,</span></span><br><span class="line"><span class="comment">//           "description": "trashcan",</span></span><br><span class="line"><span class="comment">//           "status": "uncool",</span></span><br><span class="line"><span class="comment">//           "category": "household",</span></span><br><span class="line"><span class="comment">//           "subcategory": "kitchen",</span></span><br><span class="line"><span class="comment">//       &#125;,</span></span><br><span class="line"><span class="comment">//       ...</span></span><br><span class="line"><span class="comment">//   ]</span></span><br><span class="line"><span class="comment">// &#125;</span></span><br></pre></td></tr></table></figure>
@@ -184,7 +212,7 @@
 <p>The mode is typically ‘desc’ or ‘all’, but if left out will default to ‘desc’.</p>
 <p>To select details from all referenced records, <em>refs</em> can be specified as simply ‘desc’ or ‘all’, and this mode will be applied to all references.</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> result = <span class="keyword">await</span> getMappedView(context, <span class="string">'thing_category'</span>, &#123;</span><br><span class="line">  refs: <span class="string">'desc'</span></span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// &#123;</span></span><br><span class="line"><span class="comment">//     "data": [</span></span><br><span class="line"><span class="comment">//         &#123;</span></span><br><span class="line"><span class="comment">//             "id": 4,</span></span><br><span class="line"><span class="comment">//             "description": "trashcan",</span></span><br><span class="line"><span class="comment">//             "status": "uncool",</span></span><br><span class="line"><span class="comment">//             "category": "household",</span></span><br><span class="line"><span class="comment">//             "subcategory": "kitchen",</span></span><br><span class="line"><span class="comment">//             "_references": &#123;</span></span><br><span class="line"><span class="comment">//                 "status": "Mock those in possession of such an object",</span></span><br><span class="line"><span class="comment">//                 "categorization": "Things in the kitchen"</span></span><br><span class="line"><span class="comment">//             &#125;</span></span><br><span class="line"><span class="comment">//         &#125;</span></span><br><span class="line"><span class="comment">//     ]</span></span><br><span class="line"><span class="comment">// &#125;</span></span><br></pre></td></tr></table></figure>
-<p>Avoid using this shortcut excessively or when not needed, as there is an overhead to selecting from related datbase tables.</p>
+<p>Avoid using this shortcut excessively or when not needed, as there is an overhead to selecting from related database tables.</p>
 <h4 id="REST-equivalent-2"><a href="#REST-equivalent-2" class="headerlink" title="REST equivalent"></a>REST equivalent</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">curl http://127.0.0.1:4000/api/APIKEY/1.0/thing/4?refs=status=desc,categorization=all</span><br><span class="line"></span><br><span class="line">curl http://127.0.0.1:4000/api/APIKEY/1.0/thing/4?refs=desc</span><br></pre></td></tr></table></figure>
 <h3 id="options"><a href="#options" class="headerlink" title="options"></a>options</h3><p>The <code>option</code> option is similar to the <em>refs</em> option, except that instead of returning details of a specific record that is referenced, it returns <em>all</em> the records of the referenced type.</p>
 <p>This is primarily used when the selected record is about to be displayed and edited on a user interface, and we want to know the allowable values for a dropdown or select box.</p>
@@ -205,7 +233,7 @@
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> result = <span class="keyword">await</span> getMappedView(context, <span class="string">'thing_category'</span>, &#123;</span><br><span class="line">  where: &#123;</span><br><span class="line">    category: <span class="string">"household"</span>,</span><br><span class="line">    subcategory: <span class="string">"kitchen"</span></span><br><span class="line">  &#125;,</span><br><span class="line">  usedBy: <span class="string">"thing"</span>        &lt;--- No field name or alias</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 <p>Be careful using this form - if you ever add a second reference between these two tables, then it is not possible to determine which reference is required, and existing code will throw an exception.</p>
 <h4 id="REST-equivalent-4"><a href="#REST-equivalent-4" class="headerlink" title="REST equivalent"></a>REST equivalent</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">http://127.0.0.1:3000/api/ABC123/v1.0/thing_status/cool?usedBy=thing.status</span><br></pre></td></tr></table></figure>
-<h2 id="insertMappedView-POST"><a href="#insertMappedView-POST" class="headerlink" title="insertMappedView (POST)"></a>insertMappedView (POST)</h2><h2 id="updateMappedView-PUT"><a href="#updateMappedView-PUT" class="headerlink" title="updateMappedView (PUT)"></a>updateMappedView (PUT)</h2><h2 id="deleteMappedView-DEL"><a href="#deleteMappedView-DEL" class="headerlink" title="deleteMappedView (DEL)"></a>deleteMappedView (DEL)</h2>
+<h2 id="insertView-POST"><a href="#insertView-POST" class="headerlink" title="insertView (POST)"></a>insertView (POST)</h2><h2 id="updateView-PUT"><a href="#updateView-PUT" class="headerlink" title="updateView (PUT)"></a>updateView (PUT)</h2><h2 id="deleteView-DEL"><a href="#deleteView-DEL" class="headerlink" title="deleteView (DEL)"></a>deleteView (DEL)</h2>
   
   
   <div class="footer">
