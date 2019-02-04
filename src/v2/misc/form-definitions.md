@@ -1,7 +1,7 @@
 ---
 title: Designing Forms
-type: guide
-order: 3
+type: misc
+order: 2
 ---
 
 

@@ -1,14 +1,13 @@
 ---
-title: Installation
-type: guide
+title: Client Installation
+type: client
 order: 1
 ---
 
-This site is built with [hexo](https://hexo.io/). Site content is written in Markdown format located in `src`. This is for the official documentation of contentservice.io by Tooltwist.
 
 ## Quick Start
 
-Could not be much simpler...
+**WIP***
 
 ```bash
 vue create my-project
@@ -44,7 +43,8 @@ Assuming you have a working VueJS project (similar to one created by Vue CLI):
 ```vue
 "dependencies": {
   ...
-  "vue-contentservice": "^0.1.76"
+  "@tooltwist/vue-contentservice": "^0.1.76"
+  "@tooltwist/vue-formservice": "^0.1.76"
   "@fortawesome/fontawesome-free": "^5.4.2",
   "bulma": "^0.7.2",
   ...
@@ -55,6 +55,7 @@ Assuming you have a working VueJS project (similar to one created by Vue CLI):
 
 ```vue
 import ContentService from "vue-contentservice"
+import FormService from "vue-formservice"
 
 require('font-awesome/css/font-awesome.min.css')
 require('vue-contentservice/dist/vue-contentservice.css')

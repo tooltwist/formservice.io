@@ -3,7 +3,7 @@ title: API
 type: api
 ---
 
-## selectMappedView (GET)
+## selectView (GET)
 
 Select records of a specified type
 
@@ -146,7 +146,7 @@ let result = await getMappedView(context, 'thing_category', {
 //     ]
 // }
 ```
-Avoid using this shortcut excessively or when not needed, as there is an overhead to selecting from related datbase tables.
+Avoid using this shortcut excessively or when not needed, as there is an overhead to selecting from related database tables.
 
 #### REST equivalent
 
@@ -353,10 +353,10 @@ http://127.0.0.1:3000/api/ABC123/v1.0/thing_status/cool?usedBy=thing.status
 
 
 
-## insertMappedView (POST)
+## insertView (POST)
 
 
-## updateMappedView (PUT)
+## updateView (PUT)
 
 
-## deleteMappedView (DEL)
+## deleteView (DEL)

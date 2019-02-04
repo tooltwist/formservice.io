@@ -1,6 +1,32 @@
 <li>
+  <a href="<%- url_for("/v2/guide/") %>" class="nav-link<%- page.path.match(/\/guide(\/|$)/) ? ' current' : '' %>">Guide</a>
+</li>
+<li>
+  <a href="<%- url_for("/v2/client/") %>" class="nav-link<%- page.path.match(/\/client(\/|$)/) ? ' current' : '' %>">Client</a>
+</li>
+<li>
+  <a href="<%- url_for("/v2/server/") %>" class="nav-link<%- page.path.match(/\/server(\/|$)/) ? ' current' : '' %>">Server</a>
+</li>
+<li>
+  <a href="<%- url_for("/v2/schema/") %>" class="nav-link<%- page.path.match(/\/schema(\/|$)/) ? ' current' : '' %>">Schema</a>
+</li>
+<li>
+  <a href="<%- url_for("/v2/api/") %>" class="nav-link<%- page.path.match(/\/api(\/|$)/) ? ' current' : '' %>">API</a>
+</li>
+<!--
+<li>
+<a href="<%- url_for("/v2/examples/") %>" class="nav-link<%- page.path.match(/\/examples(\/|$)/) ? ' current' : '' %>">Examples</a>
+</li>
+-->
+
+<!--
+<li>
   <form id="search-form">
     <input type="text" id="search-query-<%- context %>" class="search-query st-default-search-input">
   </form>
 </li>
+-->
+
+<% if (false) { %>}
 <%- partial('partials/learn_dropdown') %>
+<% } %>

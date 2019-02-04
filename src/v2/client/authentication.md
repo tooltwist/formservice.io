@@ -1,7 +1,7 @@
 ---
 title: Authentication
-type: guide
-order: 4
+type: client
+order: 2
 ---
 
 
